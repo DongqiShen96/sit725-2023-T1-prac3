@@ -1,79 +1,46 @@
-const cardList = [​
+const cardList = [
+    {
+        title: 'Disny',
+        image: 'images/Dsiny.png',
+        link: 'About carton',
+        description: 'Disny description'
+    },
+    {
+        title: 'Marval',
+        image: 'images/spiderman.png',
+        link: 'About Marval',
+        description: 'Marval description'
+    }
+];
 
-    {​
+const clickMe = () => {
+    alert("Thanks for clicking me. Hope you have a nice day!");
+}
 
-        title: "Kitten 2",​
+const addCards = (items) => {
+    console.log(items);
+    items.forEach(item => {
+        let itemToAppend = '<div class="col s4 center-align"> <div class="card medium"><div class="card-image waves-effect waves-block waves-light"><img class="activator" src="' + item.image + '"></img></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">' + item.title + '<i class="material-icons right">more_vert</i></span><p><a href="#">About this kiiten</a></p></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">' + item.title + '<i class="material-icons right">close</i></span><p class="card-text">' + item.description + '</p></div></div></div>';
+        $('#card-section').append(itemToAppend);
+    });
+}
 
-        image: "images/kitten-2.jpg",​
+const submitForm = () => {
+    let formData = {};
+    formData.first_name = $('#first_name').val();
+    formData.last_name = $('#last_name').val();
+    formData.email = $('#email').val();
+    formData.password = $('#password').val();
 
-        link: "About Kitten 2",​
+    console.log('form data: ', formData);
+}
 
-        desciption: "Demo desciption about kitten 2"​
+$(document).ready(function () {
+    $('.materialboxed').materialbox();
+    $('.modal').modal();
 
-    },​
-
-    {​
-
-        title: "Kitten 3",​
-
-        image: "images/kitten-3.jpg",​
-
-        link: "About Kitten 3",​
-
-        desciption: "Demo desciption about kitten 3"​
-
-    }​
-
-]​
-
-const clickMe = () => {​
-
-    alert("Thanks for clicking me. Hope you have a nice day!")​
-
-}​
-
-​
-
-const addCards = (items) => {​
-
-    items.forEach(item => {​
-
-        let itemToAppend = '<div class="col s4 center-align">'+​
-
-    '<div class="card medium"><div class="card-image waves-effect waves-block waves-light"><img class="activator" src="'+item.image+'">'+​
-
-    '</div><div class="card-content">'+​
-
-    '<span class="card-title activator grey-text text-darken-4">'+item.title+'<i class="material-icons right">more_vert</i></span><p><a href="#">'+item.link+'</a></p></div>'+​
-
-    '<div class="card-reveal">'+​
-
-        '<span class="card-title grey-text text-darken-4">'+item.title+'<i class="material-icons right">close</i></span>'+​
-
-        '<p class="card-text">'+item.desciption+'</p>'+​
-
-      '</div></div></div>';​
-
-      $("#card-section").append(itemToAppend)​
-
-    });​
-
-}​
-
-​
-
-​
-
-​
-
-$(document).ready(function(){​
-
-    $('.materialboxed').materialbox();​
-
-    $('#clickMeButton').click(()=>{​
-        clickMe();​
-    })​
-
-    addCards(cardList);​
-
-  });
+    addCards(cardList);
+    $('#formSubmit').click(() => {
+        submitForm();
+    })
+});
